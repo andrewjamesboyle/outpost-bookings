@@ -7,10 +7,10 @@ async function generateAccessLinkWithKisi(bookingData) {
       "https://api.kisi.io/group_links",
       {
         group_link: {
-          name: bookingData.name, // You would need to provide appropriate data from your bookingData
-          group_id: bookingData.group_id, // You would need to provide appropriate data from your bookingData
-          valid_from: bookingData.start, // You would need to provide appropriate data from your bookingData
-          valid_until: bookingData.end, // You would need to provide appropriate data from your bookingData
+          name: bookingData.name,
+          group_id: bookingData.group_id,
+          valid_from: bookingData.start,
+          valid_until: bookingData.end,
         },
       },
       {
