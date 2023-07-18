@@ -6,13 +6,13 @@ module.exports = async (req, res) => {
     return res.status(405).send("Method Not Allowed");
   }
 
-  console.log("request body", req.body);
-
   // Parse incoming booking data
-  //   const bookingData = req.body;
+  const bookingData = req.body;
+  console.log("bookingData", req.body);
 
   // Generate access link with Kisi API
-  //   const accessLink = await generateAccessLinkWithKisi(bookingData);
+  const accessLink = await generateAccessLinkWithKisi(bookingData);
+  console.log("accessLink", accessLink);
 
   // Send custom email with SendGrid API
   //   await sendCustomEmailWithSendgrid(bookingData, accessLink);
