@@ -1,5 +1,5 @@
 async function sendCustomEmailWithSendgrid(emailData) {
-  // Communicate with SendGrid API...
+  // send accesslink and booking data to sendgrid API
 }
 
 module.exports = sendCustomEmailWithSendgrid;

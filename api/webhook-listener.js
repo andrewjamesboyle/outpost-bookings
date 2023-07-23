@@ -6,6 +6,8 @@ module.exports = async (req, res) => {
     return res.status(405).send("Method Not Allowed");
   }
 
+  // TO DO: Add validation for incoming data
+
   // Parse incoming booking data
   const bookingData = req.body;
   console.log("bookingData", req.body);
