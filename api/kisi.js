@@ -7,16 +7,17 @@ async function generateAccessLinkWithKisi(bookingData) {
       "https://api.kisi.io/group_links",
       {
         group_link: {
-          name: bookingData.name,
-          group_id: bookingData.group_id,
-          valid_from: bookingData.start,
-          valid_until: bookingData.end,
+          name: bookingData.member_name,
+          group_id: 64450,
+          valid_from: bookingData.check_in_datetime,
+          valid_until: bookingData.check_out_datetime,
         },
       },
       {
         headers: {
           Authorization: `KISI-LOGIN ${process.env.KISI_API_KEY}`,
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
       }
     );
