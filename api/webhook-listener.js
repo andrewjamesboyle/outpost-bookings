@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
   // Build object to pass required info to SendGrid
   const emailData = {
     to: bookingData.member_email,
-    from: "andrewboylecodes@gmail.com",
+    from: "logan@outpost.hr",
     subject: "Booking Confirmation",
     text: `Your booking has been confirmed. Use this access code to enter the building. ${accessLink}`,
     html: `<p>Your booking has been confirmed. Use this access code to enter the building. ${accessLink}</p>`,
