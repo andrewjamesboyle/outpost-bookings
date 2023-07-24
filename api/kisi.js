@@ -2,6 +2,12 @@ require("dotenv").config();
 const axios = require("axios");
 
 async function generateAccessLinkWithKisi(bookingData) {
+  // Parse the datetime string into a Date object.
+  let checkInDate = new Date(bookingData.check_in_datetime);
+
+  // Subtract 2 hours from the check in date.
+  checkInDate.setHours(checkInDate.getHours() - 2);
+
   try {
     const response = await axios.post(
       "https://api.kisi.io/group_links",
@@ -9,7 +15,7 @@ async function generateAccessLinkWithKisi(bookingData) {
         group_link: {
           name: bookingData.member_name,
           group_id: 64450,
-          valid_from: bookingData.check_in_datetime,
+          valid_from: checkInDate.toISOString(), // Convert the Date object back to a string.
           valid_until: bookingData.check_out_datetime,
         },
       },
