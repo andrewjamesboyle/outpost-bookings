@@ -21,8 +21,8 @@ module.exports = async (req, res) => {
     to: bookingData.member_email,
     from: "logan@outpost.hr",
     subject: "Booking Confirmation",
-    text: `Your booking has been confirmed. Use this access code to enter the building. ${accessLink}`,
-    html: `<p>Your booking has been confirmed. Use this access code to enter the building. ${accessLink}</p>`,
+    text: `Your booking has been confirmed. Use this access code to enter the space up to two hours before your booking. ${accessLink}`,
+    html: `<p>Your booking has been confirmed. Use this access code to enter the space up to two hours before your booking. ${accessLink}</p>`,
   };
 
   // Send custom email with SendGrid API
