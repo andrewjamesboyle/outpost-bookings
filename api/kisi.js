@@ -14,7 +14,7 @@ async function generateAccessLinkWithKisi(bookingData) {
       {
         group_link: {
           name: bookingData.member_name,
-          group_id: 64450,
+          group_id: 148832,
           valid_from: checkInDate.toISOString(), // Convert the Date object back to a string.
           valid_until: bookingData.check_out_datetime,
         },
