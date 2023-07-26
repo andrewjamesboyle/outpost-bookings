@@ -1,12 +1,16 @@
 require("dotenv").config();
 const axios = require("axios");
+const moment = require("moment-timezone");
 
 async function generateAccessLinkWithKisi(bookingData) {
-  // Parse the datetime string into a Date object.
-  let checkInDate = new Date(bookingData.check_in_datetime);
+  // Parse datetime string into a moment object, specify its time zone as PST.
+  let checkInDate = moment.tz(
+    bookingData.check_in_datetime,
+    "America/Los_Angeles"
+  );
 
-  // Subtract 2 hours from the check in date.
-  checkInDate.setHours(checkInDate.getHours() - 2);
+  // Subtract 2 hours from check in date.
+  checkInDate.subtract(2, "hours");
 
   try {
     const response = await axios.post(
