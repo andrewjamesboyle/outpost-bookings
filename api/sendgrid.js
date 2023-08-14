@@ -24,4 +24,16 @@ async function sendCustomEmailWithSendgrid(emailData) {
   }
 }
 
-module.exports = sendCustomEmailWithSendgrid;
+async function sendErrorEmail(errorMsg) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  console.log("Attempting to send error email with data:", errorMsg);
+  try {
+    const resp = await sgMail.send(errorMsg);
+    console.log("response from SG", resp[0].statusCode);
+    console.log("Error alert email sent!");
+  } catch (error) {
+    console.log("sendErrorEmail Could not send error alert email:", error);
+  }
+}
+
+module.exports = { sendCustomEmailWithSendgrid, sendErrorEmail };
