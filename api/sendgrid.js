@@ -6,9 +6,8 @@ async function sendCustomEmailWithSendgrid(emailData) {
   const msg = {
     to: emailData.to,
     from: emailData.from,
-    subject: emailData.subject,
-    text: emailData.text,
-    html: emailData.html,
+    template_id: emailData.template_id,
+    dynamic_template_data: emailData.dynamic_template_data,
   };
 
   try {
