@@ -23,9 +23,11 @@ module.exports = async (req, res) => {
       const emailData = {
         to: bookingData.member_email,
         from: "logan@outpost.hr",
-        subject: "Booking Confirmation",
-        text: `Hello ${bookingData.member_name}. Your booking has been confirmed. Use this access code to enter the space up to two hours before your booking. ${accessLink}`,
-        html: `<p>Hello ${bookingData.member_name}. Your booking has been confirmed. Use this access code to enter the space up to two hours before your booking. ${accessLink}</p>`,
+        template_id: "d-c91a83570d014022909426d923558273",
+        dynamic_template_data: {
+          accessLink: accessLink,
+          userName: bookingData.member_name,
+        },
       };
 
       // Send custom email with SendGrid API
