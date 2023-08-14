@@ -1,6 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const moment = require("moment-timezone");
+const { sendErrorEmail } = require("./sendgrid");
 
 async function generateAccessLinkWithKisi(bookingData) {
   // Parse the datetime string into a Date object.
@@ -40,9 +41,23 @@ async function generateAccessLinkWithKisi(bookingData) {
       throw new Error("Failed to generate access link with Kisi");
     }
   } catch (error) {
-    console.error(error);
-    throw error;
+    await handleError(error, "Failed to generate access link with Kisi");
   }
 }
 
-module.exports = generateAccessLinkWithKisi;
+async function handleError(error, message) {
+  console.error("Entering handleError function with message:", message);
+
+  // Construct an error email object
+  const errorEmailData = {
+    to: ["andrewboylecodes@gmail.com", "logan@outpost.hr"],
+    from: "logan@outpost.hr",
+    subject: "Outpost-Bookings Server Error Alert",
+    text: `${message}: ${error.message}\n${error.stack}`,
+  };
+
+  // Send the error email
+  await sendErrorEmail(errorEmailData);
+}
+
+module.exports = { generateAccessLinkWithKisi, handleError };
